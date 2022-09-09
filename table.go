@@ -999,6 +999,9 @@ func (t *Table) parseDimension(str string, colKey, rowKey int) []string {
 	)
 
 	raw = getLines(str)
+	if rowKey != 0 {
+		raw = getLinesNoHeader(str)
+	}
 	maxWidth = 0
 	for _, line := range raw {
 		if w := DisplayWidth(line); w > maxWidth {

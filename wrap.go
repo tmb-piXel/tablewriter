@@ -97,3 +97,11 @@ func WrapWords(words []string, spc, lim, pen int) [][]string {
 func getLines(s string) []string {
 	return strings.Split(s, nl)
 }
+
+// getLines decomposes a multiline string into a slice of strings.
+func getLinesNoHeader(s string) []string {
+	if len(s) != 0 && s[0:1] != "-" {
+		s = strings.Replace(s, "-", "-\n", -1)
+	}
+	return strings.Split(s, nl)
+}
